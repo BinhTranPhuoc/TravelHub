@@ -17,7 +17,7 @@ namespace TravelHub.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller  = "DashBoard", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
