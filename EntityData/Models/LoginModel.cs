@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityData.Models
 {
-    class LoginModel
+    public class LoginModel
     {
         public string userName { get; set; }
         public string password { get; set; }

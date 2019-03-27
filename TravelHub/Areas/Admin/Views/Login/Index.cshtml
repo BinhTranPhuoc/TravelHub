@@ -1,9 +1,11 @@
-﻿
+﻿@model EntityData.Account
+
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,30 +24,46 @@
     <link href="/Assets/Admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" action="" method="POST">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
-                            </fieldset>
-                        </form>
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Sign In</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" action="" method="POST">
+                                <fieldset>
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+                                    @if (ViewBag.Message != null)
+                                    {
+                                        <div style="border: 1px solid red">
+                                            @ViewBag.Message
+                                        </div>
+                                    }
+                                    <div class="form-group">
+                                        @*<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>*@
+                                        @Html.TextBoxFor(a => a.userName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(a => a.userName)
+                                    </div>
+                                    <div class="form-group">
+                                        @*<input class="form-control" placeholder="Password" name="password" type="password" value="">*@
+                                        @Html.TextBoxFor(a => a.password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(a => a.password)
+                                    </div>
+                                    <button type="submit" value="Login" class="btn btn-lg btn-success btn-block">Login</button>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+
     <!-- jQuery -->
     <script src="/Assets/Admin/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -56,4 +74,3 @@
     <script src="/Assets/Admin/dist/js/sb-admin-2.js"></script>
 </body>
 </html>
-
