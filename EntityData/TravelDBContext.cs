@@ -1,14 +1,14 @@
-namespace EntityData.Framework
+namespace EntityData
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class TravelDbContext : DbContext
+    public partial class TravelDBContext : DbContext
     {
-        public TravelDbContext()
-            : base("name=TravelDbContext")
+        public TravelDBContext()
+            : base("name=TravelDBContext")
         {
         }
 

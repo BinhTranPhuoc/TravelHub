@@ -1,4 +1,4 @@
-namespace EntityData.Framework
+namespace EntityData
 {
     using System;
     using System.Collections.Generic;
