@@ -23,12 +23,12 @@ namespace TravelHub.Areas.Admin.Controllers
             {
                 using (TravelDBContext db = new TravelDBContext())
                 {
-                    var identity = db.Accounts.Where(x => x.userName.Equals(account.userName)
+                    var result = db.Accounts.Where(x => x.userName.Equals(account.userName)
                     && x.password.Equals(account.password)).FirstOrDefault();
 
-                    if (identity != null)
+                    if (result != null)
                     {
-                        Session["userName"] = identity.userName.ToString();
+                        Session["userName"] = result.userName.ToString();
                         return RedirectToAction("AdminDashBoard");
                     }
                 }
